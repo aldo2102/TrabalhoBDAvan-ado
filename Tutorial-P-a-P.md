@@ -5,9 +5,10 @@ http://www.devmedia.com.br/utilizando-a-dupla-mongodb-e-php/27798
 http://www.vivaolinux.com.br/dica/Instalando-servidor-Apache-+-PHP-+-MySQL-+-phpMyadmin-+-noip-no-Ubuntu-6.10-Server
 
 ---------------- Comandos -----
-Download
+-Download
 
 wget -S "http://arquivos.portaldatransparencia.gov.br/downloads.asp?a=2014&m=09&consulta=BolsaFamiliaFolhaPagamento"
+
 wget -S "http://arquivos.portaldatransparencia.gov.br/downloads.asp?a=2014&m=10&consulta=BolsaFamiliaFolhaPagamento"
 
 -Renomeando
