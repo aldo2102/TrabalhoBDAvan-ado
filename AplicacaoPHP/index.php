@@ -1,5 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
+<?php
+	
+	if ( !isset($_SESSION['sessao']) ) {
+		session_start(); // Inicia a sessÃ£o
+		$_SESSION['sessao'] = new MongoClient();
+		$m = $_SESSION['sessao'];
+	}
+	
+	
+?>
 
 <head>
 
@@ -9,7 +19,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Trabalho Final - Banco de dados Avançados</title>
+    <title>Trabalho Final - Banco de dados AvanÃ§ados</title>
 
     <!-- Bootstrap Core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -69,9 +79,9 @@
     <!-- Header -->
     <header id="top" class="header">
         <div class="text-vertical-center">
-            <h1>Trabalho Final - Banco de dados Avançados</h1>
-            <h2>Aplicação com MongoDB</h2>
-            <h3>Autores: <b>Aldo Henrique</b> e <b>João Bachiega</b></h3>
+            <h1>Trabalho Final - Banco de dados AvanÃ§ados</h1>
+            <h2>AplicaÃ§Ã£o com MongoDB</h2>
+            <h3>Autores: <b>Aldo Henrique</b> e <b>JoÃ£o Bachiega</b></h3>
             <br>
            
         </div>
@@ -88,36 +98,34 @@
 							<option value="">Selecione</option>
 							<option value="AC">Acre</option>
 							<option value="AL">Alagoas</option>
-							<option value="AP">Amapá</option>
+							<option value="AP">AmapÃ¡</option>
 							<option value="AM">Amazonas</option>
 							<option value="BA">Bahia</option>
-							<option value="CE">Ceará</option>
+							<option value="CE">CearÃ¡</option>
 							<option value="DF">Distrito Federal</option>
 							<option value="ES">Espirito Santo</option>
-							<option value="GO">Goiás</option>
-							<option value="MA">Maranhão</option>
+							<option value="GO">GoiÃ¡s</option>
+							<option value="MA">MaranhÃ£o</option>
 							<option value="MS">Mato Grosso do Sul</option>
 							<option value="MT">Mato Grosso</option>
 							<option value="MG">Minas Gerais</option>
-							<option value="PA">Pará</option>
-							<option value="PB">Paraíba</option>
-							<option value="PR">Paraná</option>
+							<option value="PA">ParÃ¡</option>
+							<option value="PB">ParaÃ­ba</option>
+							<option value="PR">ParanÃ¡</option>
 							<option value="PE">Pernambuco</option>
-							<option value="PI">Piauí</option>
+							<option value="PI">PiauÃ­</option>
 							<option value="RJ">Rio de Janeiro</option>
 							<option value="RN">Rio Grande do Norte</option>
 							<option value="RS">Rio Grande do Sul</option>
-							<option value="RO">Rondônia</option>
+							<option value="RO">RondÃ´nia</option>
 							<option value="RR">Roraima</option>
 							<option value="SC">Santa Catarina</option>
-							<option value="SP">São Paulo</option>
+							<option value="SP">SÃ£o Paulo</option>
 							<option value="SE">Sergipe</option>
 							<option value="TO">Tocantins</option>
 						</select>
 						Selecionar periodo 
 								<?php
-									set_time_limit(300000);
-									$m = new MongoClient();
 									$db = $m->selectDB("bolsafamilia");
 									$collection = $db->mes102014;
 														
@@ -134,7 +142,6 @@
 					<?php
 					if(isset($_GET['estado']) ){
 						$collectionSelect=$_GET['collection'];
-						$m = new MongoClient();
 						$estado=$_GET['estado'];
 							$db = $m->selectDB("bolsafamilia");
 							$collection = $db->selectCollection($collectionSelect);
@@ -192,36 +199,35 @@
 							<option value="">Selecione</option>
 							<option value="AC">Acre</option>
 							<option value="AL">Alagoas</option>
-							<option value="AP">Amapá</option>
+							<option value="AP">AmapÃ¡</option>
 							<option value="AM">Amazonas</option>
 							<option value="BA">Bahia</option>
-							<option value="CE">Ceará</option>
+							<option value="CE">CearÃ¡</option>
 							<option value="DF">Distrito Federal</option>
 							<option value="ES">Espirito Santo</option>
-							<option value="GO">Goiás</option>
-							<option value="MA">Maranhão</option>
+							<option value="GO">GoiÃ¡s</option>
+							<option value="MA">MaranhÃ£o</option>
 							<option value="MS">Mato Grosso do Sul</option>
 							<option value="MT">Mato Grosso</option>
 							<option value="MG">Minas Gerais</option>
-							<option value="PA">Pará</option>
-							<option value="PB">Paraíba</option>
-							<option value="PR">Paraná</option>
+							<option value="PA">ParÃ¡</option>
+							<option value="PB">ParaÃ­ba</option>
+							<option value="PR">ParanÃ¡</option>
 							<option value="PE">Pernambuco</option>
-							<option value="PI">Piauí</option>
+							<option value="PI">PiauÃ­</option>
 							<option value="RJ">Rio de Janeiro</option>
 							<option value="RN">Rio Grande do Norte</option>
 							<option value="RS">Rio Grande do Sul</option>
-							<option value="RO">Rondônia</option>
+							<option value="RO">RondÃ´nia</option>
 							<option value="RR">Roraima</option>
 							<option value="SC">Santa Catarina</option>
-							<option value="SP">São Paulo</option>
+							<option value="SP">SÃ£o Paulo</option>
 							<option value="SE">Sergipe</option>
 							<option value="TO">Tocantins</option>
 						</select> 
 						 Selecionar periodo 
 								<?php
-									set_time_limit(300000);
-									$m = new MongoClient();
+									
 									$db = $m->selectDB("bolsafamilia");
 														
 									$cursor = $db->getCollectionNames();
@@ -238,8 +244,7 @@
                         	<?php
                         	if(isset($_GET['estadoPessoa'])){
 								$collectionSelect=$_GET['collection'];
-								set_time_limit(300000);
-								$m = new MongoClient();
+								
 								$estadoPessoa=$_GET['estadoPessoa'];
 								$db = $m->selectDB("bolsafamilia");
 								$collection = $db->selectCollection($collectionSelect);
@@ -268,8 +273,6 @@
 				<h3><input type="text" name="dados1" valor=0/> < Valor < <input type="text" name="dados2" valor=500/> 
 				 Selecionar periodo 
 								<?php
-									set_time_limit(300000);
-									$m = new MongoClient();
 									$db = $m->selectDB("bolsafamilia");
 									$collection = $db->mes102014;
 														
@@ -287,7 +290,7 @@
 					if(isset($_GET['dados1'])){
 						$dado1=(int)$_GET['dados1'];
 						$dado2=(int)$_GET['dados2'];
-						$m = new MongoClient();
+						
 						$estado=$_GET['estado'];
 							$db = $m->selectDB("bolsafamilia");
 							$collectionSelect=$_GET['collection'];
@@ -300,7 +303,7 @@
 							$sort  = array('_id' => -1);
 							$cursor = $collection->find(array("Valor Parcela" => array('$gt' => $dado1, '$lte' => $dado2)))->skip($skip)->limit($limit)->sort($sort);
 							$cont = $collection->find(array("Valor Parcela" => array('$gt' => $dado1, '$lte' => $dado2)))->count();
-							echo "<h2 style='text-shadow: 0 0 20px #000, 0 -10px 20px #000, 0 10px 20px #000, -20px 0 40px #000, 20px 0 40px #000;'>São no total $cont bolsa nesse intervalo de valor</h2>";
+							echo "<h2 style='text-shadow: 0 0 20px #000, 0 -10px 20px #000, 0 10px 20px #000, -20px 0 40px #000, 20px 0 40px #000;'>SÃ£o no total $cont bolsas nesse intervalo de valor</h2>";
 							$cursor2 = $collection->find()->skip($skip)->limit($limit)->sort($sort);
 							$total= $cursor2->count();
 							echo "<br>";
@@ -334,35 +337,35 @@
 						<form method="POST" action="index.php#portfolio">
 						<h3><select name='estadoMaior'>
 							<option value="">Selecione</option>
-							<option value="BR">Brasíl (todos os estados)</option>
+							<option value="BR">BrasÃ­l (todos os estados)</option>
 							<option value="AC">Acre</option>
 							<option value="AL">Alagoas</option>
-							<option value="AP">Amapá</option>
+							<option value="AP">AmapÃ¡</option>
 							<option value="AM">Amazonas</option>
 							<option value="BA">Bahia</option>
-							<option value="CE">Ceará</option>
+							<option value="CE">CearÃ¡</option>
 							<option value="DF">Distrito Federal</option>
 							<option value="ES">Espirito Santo</option>
-							<option value="GO">Goiás</option>
-							<option value="MA">Maranhão</option>
+							<option value="GO">GoiÃ¡s</option>
+							<option value="MA">MaranhÃ£o</option>
 							<option value="MS">Mato Grosso do Sul</option>
 							<option value="MT">Mato Grosso</option>
 							<option value="MG">Minas Gerais</option>
-							<option value="PA">Pará</option>
-							<option value="PB">Paraíba</option>
-							<option value="PR">Paraná</option>
+							<option value="PA">ParÃ¡</option>
+							<option value="PB">ParaÃ­ba</option>
+							<option value="PR">ParanÃ¡</option>
 							<option value="PE">Pernambuco</option>
-							<option value="PI">Piauí</option>
+							<option value="PI">PiauÃ­</option>
 							<option value="RJ">Rio de Janeiro</option>
 							<option value="RN">Rio Grande do Norte</option>
 							<option value="RS">Rio Grande do Sul</option>
-							<option value="RO">Rondônia</option>
+							<option value="RO">RondÃ´nia</option>
 							<option value="RR">Roraima</option>
 							<option value="SC">Santa Catarina</option>
-							<option value="SP">São Paulo</option>
+							<option value="SP">SÃ£o Paulo</option>
 							<option value="SE">Sergipe</option>
 							<option value="TO">Tocantins</option>
-						</select> Selecionar Opção 
+						</select> Selecionar OpÃ§Ã£o 
 						<select name='opcao' required='required'>
 							<option value="">Selecione</option>
 							<option value="-1">MAX</option>
@@ -370,8 +373,6 @@
 						</select>
 						 Selecionar periodo 
 								<?php
-									set_time_limit(300000);
-									$m = new MongoClient();
 									$db = $m->selectDB("bolsafamilia");
 														
 									$cursor = $db->getCollectionNames();
@@ -387,8 +388,6 @@
                         	<?php
                         	
                         	if(isset($_POST['estadoMaior'])){
-								set_time_limit(300000);
-								$m = new MongoClient();
 								
 									$opcao = (int) $_POST['opcao'];
 								$estado=$_POST['estadoMaior'];
@@ -426,8 +425,6 @@
 							<h3>Valor: <input type="num" name="dadosTotal" valor=0/>
 						 Selecionar periodo 
 								<?php
-									set_time_limit(300000);
-									$m = new MongoClient();
 									$db = $m->selectDB("bolsafamilia");
 														
 									$cursor = $db->getCollectionNames();
@@ -442,16 +439,14 @@
 						</form>
 							<?php
 							if(isset($_POST['dadosTotal'])){
-								set_time_limit(300000);
-								$m = new MongoClient();
 								$dadosTotal=(int)$_POST['dadosTotal'];
 								$db = $m->selectDB("bolsafamilia");
 								$collectionSelect=$_POST['collection'];
 								
 								$collection = $db->selectCollection($collectionSelect);
-										echo $collectionSelect;			
+												
 								$cursor = $collection->find(array("Valor Parcela" => array('$gt' => $dadosTotal)))->count();
-								echo "<br><h1>São no total de $cursor pessoas</h1>";
+								echo "<br><h1>SÃ£o no total de $cursor pessoas</h1>";
 								echo "<br>";
 							}
 							?>	
@@ -466,8 +461,8 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-10 col-lg-offset-1 text-center">
-					<h1>Aplicação com MongoDB</h1>
-                    <h4><strong>Trabalho Final - Banco de dados Avançados</strong>
+					<h1>AplicaÃ§Ã£o com MongoDB</h1>
+                    <h4><strong>Trabalho Final - Banco de dados AvanÃ§ados</strong>
                    
                     <hr class="small">
                 </div>
@@ -516,5 +511,11 @@
 </body>
 
 </html>
-<?php $mongodb->close(); ?>
+<?php 
+if (isset($_SESSION['sessao']) ) {
+	$mongodb->close();
+	unset($_SESSION['sessao']); // Deleta uma variÃ¡vel da sessÃ£o
+	session_destroy(); // DestrÃ³i toda sessÃ£o 
+}
+?>
 
