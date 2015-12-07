@@ -57,8 +57,6 @@ Total por estados: db.getCollection("09/2014").aggregate([ { $group: { _id: "$UF
 
 -------index-------
 
-Tempo de consulta antes e depois da criação dos index????????
-
 
 
 db.getCollection("09/2014").ensureIndex({"avg(Valor Parcela)":1})
