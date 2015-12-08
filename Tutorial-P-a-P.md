@@ -42,7 +42,7 @@ MIN: db.getCollection("10/2014").find({ },    { "Valor Parcela": 1, _id: 0 }).so
 
 AVG: db.getCollection("10/2014").aggregate([{"$group": {"_id": null, "avg(Valor Parcela)": {"$avg": "$Valor Parcela"}}}])
 
-Total por estados: db.mes102014.aggregate([ { $group: { _id: "$UF", total: { $sum: "$Valor Parcela" }}}] )
+Total por estados: db.getCollection("10/2014").aggregate([ { $group: { _id: "$UF", total: { $sum: "$Valor Parcela" }}}] )
 
 -----------09/2014----------
 
